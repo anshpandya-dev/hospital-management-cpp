@@ -135,6 +135,7 @@ int main(){
 
         switch(choice){
             case 1:
+            cin.ignore();     // this will ignore the extra \n in the buffer 
             AddPatient(); 
             break; 
 
