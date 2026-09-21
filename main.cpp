@@ -77,8 +77,36 @@ void AddPatient(){
         t=c; 
     }
 
-    
+    Patient *temp; 
+    temp = c->prev;
+    // swapping logic  
+    while (temp != NULL && c->priority>t->priority){
+        Patient *temp_add_prev = temp->prev; 
+        Patient *c_address_next = c->next;
+        
+        if(temp_add_prev != NULL){
+            temp_add_prev->next = c; 
+        }
+        else{
+            s=c;     // making the c the first node 
+        }
 
+        if(c_address_next !=NULL){
+            c_address_next->prev = temp; 
+        }
+        else {
+            t= temp;             // now temp is the new tail
+        }
+
+        c->prev = temp_add_prev; 
+        c->next = temp; 
+        temp->prev = c; 
+        temp->next = c_address_next; 
+
+        // updating the value of the pointer temp 
+        t = c->prev;   
+    }
+    cout<<"Node created successfully"; 
 
 
 } 
@@ -128,6 +156,7 @@ int main(){
             
             case 6:
             cout<<"Exit selected !\n"; 
+            return 0; 
             break; 
 
             default:
