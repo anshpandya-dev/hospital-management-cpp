@@ -13,6 +13,17 @@ struct Node(){
 
 };
 
+// declaring the functions 
+void AddPatient(){} 
+
+void DisplayPatients(){} 
+
+void SendPatientToDoctor(){}
+
+void SearchPatient(){}
+
+void CancelAppointment(){}
+
 int main(){
 
     while(true){
