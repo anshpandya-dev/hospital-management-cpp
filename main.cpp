@@ -111,8 +111,19 @@ void AddPatient(Patient *&s,Patient *&t){
 
 } 
 
-void DisplayPatients(){
+void DisplayPatients(Patient *s){
+    Patient *temp = s; 
+    while (temp != NULL){
+        cout<<"Name of Patient:- "<<temp->name<<endl; 
+        cout<<"Disease:- "<<temp->disease<<endl; 
+        cout<<"Condition:- "<<temp->condition<<endl; 
+        cout<<"Gender:- "<<temp->gender<<endl; 
+        cout<<"Age:- "<<temp->age<<endl; 
+        cout<<"Contact Number:- "<<temp->contact_no<<endl; 
+        cout<<"-------------*******------------*******------------********-------------"<<endl; 
 
+        temp = temp->next; 
+    }
 } 
 
 void SendPatientToDoctor(){}
@@ -144,7 +155,7 @@ int main(){
             break; 
 
             case 2:
-            DisplayPatients(); 
+            DisplayPatients(s); 
             break; 
 
             case 3:
