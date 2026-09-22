@@ -16,10 +16,10 @@ struct Patient{
 };
 
 // declaring the functions 
-void AddPatient(){
+void AddPatient(Patient *&s,Patient *&t){
     string n, g, d, no; 
     int pri, a; 
-    Patient *t, *s,*c; 
+    Patient *c; 
     s=NULL, t=NULL; 
     c = new Patient();     // creating node 
 
@@ -111,7 +111,9 @@ void AddPatient(){
 
 } 
 
-void DisplayPatients(){} 
+void DisplayPatients(){
+
+} 
 
 void SendPatientToDoctor(){}
 
@@ -120,6 +122,8 @@ void SearchPatient(){}
 void CancelAppointment(){}
 
 int main(){
+    Patient *s,*t; 
+    s=NULL,t=NULL; 
 
     while(true){
         int choice;
@@ -136,7 +140,7 @@ int main(){
         switch(choice){
             case 1:
             cin.ignore();     // this will ignore the extra \n in the buffer 
-            AddPatient(); 
+            AddPatient(s,t); 
             break; 
 
             case 2:
