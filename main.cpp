@@ -8,6 +8,7 @@ struct Patient{
     string disease; 
     string contact_no; 
     string condition;
+    string ID; 
     int priority; 
     int age; 
     Patient *next; 
@@ -17,7 +18,7 @@ struct Patient{
 
 // declaring the functions 
 void AddPatient(Patient *&s,Patient *&t){
-    string n, g, d, no; 
+    string n, g, d, no,id; 
     int pri, a; 
     Patient *c; 
     s=NULL, t=NULL; 
@@ -34,6 +35,9 @@ void AddPatient(Patient *&s,Patient *&t){
     
     cout<<"Enter contact number:- "; 
     getline(cin, no);
+
+    cout<<"Enter patient's ID:-  ";
+    getline(cin,id); 
     
     cout<<"Enter the age of the patient:- "; 
     cin>>a; 
@@ -51,6 +55,7 @@ void AddPatient(Patient *&s,Patient *&t){
     c->disease = d; 
     c->age = a; 
     c->contact_no = no; 
+    c->ID = id; 
     c->priority= pri;  
     c->next = NULL;
     c->prev = NULL; 
@@ -114,7 +119,8 @@ void AddPatient(Patient *&s,Patient *&t){
 void DisplayPatients(Patient *s){
     Patient *temp = s; 
     while (temp != NULL){
-        cout<<"Name of Patient:- "<<temp->name<<endl; 
+        cout<<"Name of Patient:- "<<temp->name<<endl;
+        cout<<"Patient ID:- "<<temp->ID;  
         cout<<"Disease:- "<<temp->disease<<endl; 
         cout<<"Condition:- "<<temp->condition<<endl; 
         cout<<"Gender:- "<<temp->gender<<endl; 
