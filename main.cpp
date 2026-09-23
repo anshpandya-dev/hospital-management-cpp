@@ -152,7 +152,77 @@ void SendPatientToDoctor(Patient *&s){
     }
 }
 
-void SearchPatient(){}
+void SearchPatient(Patient *s){
+    if(s==NULL){
+        cout<<"No patient record available\n";
+    }
+    else 
+    {
+        Patient *temp = s; 
+        int no_patient = 1; 
+        int search_choice; 
+        cout<<"How would you like to search a patient\n"; 
+        cout<<"1. By name\n";
+        cout<<"2. By ID\n"; 
+        cout<<"3. Condition\n"; 
+        cin>>search_choice; 
+
+        switch (search_choice){
+
+            case 1: 
+            string name; 
+            cout<<"Enter the name of the patient:- ";
+            getline(cin, name);
+            while(temp->name != name && temp!=NULL){
+                temp = temp->next; 
+                no_patient +=1; 
+            }
+            if(temp !=NULL){
+                cout<<"Patient Foudnd at number \n"<<no_patient; 
+                cout<<"Patient details are given\n "; 
+                cout<<"Name of Patient:- "<<temp->name<<endl;
+                cout<<"Patient ID:- "<<temp->ID;  
+                cout<<"Disease:- "<<temp->disease<<endl; 
+                cout<<"Condition:- "<<temp->condition<<endl; 
+                cout<<"Gender:- "<<temp->gender<<endl; 
+                cout<<"Age:- "<<temp->age<<endl; 
+                cout<<"Contact Number:- "<<temp->contact_no<<endl; 
+            }
+            else{
+                cout<<"The patient you are searching for does not exist in the Data!"<<endl; 
+            }
+            
+            case 2:
+
+            
+            string id; 
+            cout<<"Enter the id of the patient:- ";
+            getline(cin, id);
+            while(temp->ID != id && temp!=NULL){
+                temp = temp->next; 
+                no_patient +=1; 
+            }
+            if(temp !=NULL){
+                cout<<"Patient Foudnd at number \n"<<no_patient; 
+                cout<<"Patient details are given\n "; 
+                cout<<"Name of Patient:- "<<temp->name<<endl;
+                cout<<"Patient ID:- "<<temp->ID;  
+                cout<<"Disease:- "<<temp->disease<<endl; 
+                cout<<"Condition:- "<<temp->condition<<endl; 
+                cout<<"Gender:- "<<temp->gender<<endl; 
+                cout<<"Age:- "<<temp->age<<endl; 
+                cout<<"Contact Number:- "<<temp->contact_no<<endl; 
+            }
+            else{
+                cout<<"The patient you are searching for does not exist in the Data!"<<endl; 
+            }
+
+
+        
+
+        }
+}
+}
 
 void CancelAppointment(){}
 
