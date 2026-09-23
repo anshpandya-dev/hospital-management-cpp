@@ -126,7 +126,25 @@ void DisplayPatients(Patient *s){
     }
 } 
 
-void SendPatientToDoctor(){}
+void SendPatientToDoctor(Patient *&s){
+
+    // edge case in which there is no patient 
+    if(s==NULL){
+        cout<<"No Patients are currently waiting !"<<endl; 
+    }
+    else {
+        cout<<"Next Patient's Details are: "<<endl; 
+        cout<<"Name: "<<s->name<<endl; 
+        cout<<"Disease: "<<s->disease<<endl; 
+        cout<<"Condition: "<<s->condition<<endl; 
+        cout<<"Contact number: "<<s->contact_no<<endl; 
+        cout<<"Gender: "<<s->gender<<endl; 
+        cout<<endl; 
+        cout<<"Sending next patient to the Doctor !"<<endl; 
+        s = s->next; 
+        s->prev == NULL;  
+    }
+}
 
 void SearchPatient(){}
 
@@ -159,7 +177,7 @@ int main(){
             break; 
 
             case 3:
-            SendPatientToDoctor();
+            SendPatientToDoctor(s);
             break; 
 
             case 4:
