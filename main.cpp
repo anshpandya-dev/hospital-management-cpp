@@ -59,6 +59,7 @@ void AddPatient(Patient *&s,Patient *&t){
     c->priority= pri;  
     c->next = NULL;
     c->prev = NULL; 
+
     if(pri==1){
         c->condition = "Critical/Energency Case";  
     }
@@ -152,9 +153,10 @@ void SendPatientToDoctor(Patient *&s){
     }
 }
 
-void SearchPatient(Patient *s){
+Patient* SearchPatient(Patient *s){
     if(s==NULL){
         cout<<"No patient record available\n";
+        return NULL;
     }
     else 
     {
@@ -188,11 +190,13 @@ void SearchPatient(Patient *s){
                 cout<<"Gender:- "<<temp->gender<<endl; 
                 cout<<"Age:- "<<temp->age<<endl; 
                 cout<<"Contact Number:- "<<temp->contact_no<<endl; 
+
+                return temp;
             }
             else{
                 cout<<"The patient you are searching for does not exist in the Data"<<endl; 
+                return NULL;
             }
-            break; 
             
             case 2:
             cin.ignore(); 
@@ -212,24 +216,48 @@ void SearchPatient(Patient *s){
                 cout<<"Gender:- "<<temp->gender<<endl; 
                 cout<<"Age:- "<<temp->age<<endl; 
                 cout<<"Contact Number:- "<<temp->contact_no<<endl; 
+
+                return temp;
             }
             else{
                 cout<<"The patient you are searching for does not exist in the Data"<<endl; 
+                return NULL;
             }
-            break; 
 
             default:
-            cout<<"Invalid choice\n"; 
-            
-
-
-        
-
+            cout<<"Invalid choice\n";
+            return NULL;      
         }
-}
+    }
 }
 
-void CancelAppointment(){}
+void CancelAppointment(Patient *&s){
+    Patient *temp = SearchPatient(s);  
+    // if the first node is being deleted 
+    if(temp == NULL){
+        cout<<endl; 
+    }
+    else{
+        if(temp->prev==NULL){         // if the first patient's appointment is being cancelled 
+            s=s->next;
+            s->prev=NULL; 
+            cout<<"\nAppointment cancelled successfully\n"; 
+        }  
+        else if(temp->next==NULL){     // if the last is being deleted 
+            Patient *temp1 = temp->prev; 
+            temp->prev = NULL; 
+            temp1->next =  NULL; 
+            cout<<"\nAppointment cancelled successfully\n"; 
+        }
+        else{
+            Patient *temp1 = temp->prev;     
+            Patient *temp2 = temp->next; 
+            temp1->next = temp2; 
+            temp2->prev = temp1;  
+            cout<<"\nAppointment cancelled successfully\n"; 
+        }
+    }
+}
 
 int main(){
     Patient *s,*t; 
@@ -266,7 +294,7 @@ int main(){
             break; 
 
             case 5:
-            CancelAppointment(); 
+            CancelAppointment(s); 
             break;
             
             case 6:
