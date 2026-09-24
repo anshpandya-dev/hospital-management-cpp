@@ -21,7 +21,6 @@ void AddPatient(Patient *&s,Patient *&t){
     string n, g, d, no,id; 
     int pri, a; 
     Patient *c; 
-    s=NULL, t=NULL; 
     c = new Patient();     // creating node 
 
     cout<<"Enter the name of the patient:- "; 
@@ -86,7 +85,7 @@ void AddPatient(Patient *&s,Patient *&t){
     Patient *temp; 
     temp = c->prev;
     // swapping logic  
-    while (temp != NULL && c->priority>t->priority){
+    while (temp != NULL && c->priority<temp->priority){
         Patient *temp_add_prev = temp->prev; 
         Patient *c_address_next = c->next;
         
@@ -101,7 +100,7 @@ void AddPatient(Patient *&s,Patient *&t){
             c_address_next->prev = temp; 
         }
         else {
-            t= temp;             // now temp is the new tail
+            t = temp;             // now temp is the new tail
         }
 
         c->prev = temp_add_prev; 
@@ -110,7 +109,7 @@ void AddPatient(Patient *&s,Patient *&t){
         temp->next = c_address_next; 
 
         // updating the value of the pointer temp 
-        t = c->prev;   
+        temp = c->prev;   
     }
     cout<<"Patient added successfully\n"; 
 
