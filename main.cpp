@@ -270,55 +270,63 @@ void CancelAppointment(Patient *&s){
 int main(){
     Patient *s,*t; 
     s=NULL,t=NULL; 
-    // string User_name = "Admin", Password = "AD1234"; 
-    // string t_usname, t_pass; 
-    // cout<<"Enter your user name : "<<endl; 
-    // getline(cin, User_name);
-    // cout<<"Enter your password: "<<endl;
-    // getline   
+    string User_name = "Admin", Password = "AD1234"; 
+    string t_usname, t_pass; 
+    cout<<"Enter your user name : "; 
+    getline(cin, t_usname);
+    cout<<"Enter  password: ";
+    getline(cin, t_pass); 
 
-    while(true){
-        int choice;
-        cout<<"Enter your choice \n"; 
-        cout<<endl; 
-        cout<<"\nEnter 1 to Add new patient\n";
-        cout<<"Enter 2 to Display the patients\n"; 
-        cout<<"Enter 3 to send next patient to Doctor\n"; 
-        cout<<"Enter 4 to search for specific patient\n"; 
-        cout<<"Enter 5 to cancel the appointment of any patient\n"; 
-        cout<<"Enter 6 to Exit\n"; 
-        cin>>choice;  
+    
+    if(t_usname==User_name && t_pass==Password) {
+        cout<<"Access Granted\n"; 
 
-        switch(choice){
-            case 1:
-            cin.ignore();     // this will ignore the extra \n in the buffer 
-            AddPatient(s,t); 
-            break; 
+        while(true){
+            int choice;
+            cout<<"Enter your choice \n"; 
+            cout<<endl; 
+            cout<<"\nEnter 1 to Add new patient\n";
+            cout<<"Enter 2 to Display the patients\n"; 
+            cout<<"Enter 3 to send next patient to Doctor\n"; 
+            cout<<"Enter 4 to search for specific patient\n"; 
+            cout<<"Enter 5 to cancel the appointment of any patient\n"; 
+            cout<<"Enter 6 to Exit\n"; 
+            cin>>choice;  
 
-            case 2:
-            DisplayPatients(s); 
-            break; 
+            switch(choice){
+                case 1:
+                cin.ignore();     // this will ignore the extra \n in the buffer 
+                AddPatient(s,t); 
+                break; 
 
-            case 3:
-            SendPatientToDoctor(s);
-            break; 
+                case 2:
+                DisplayPatients(s); 
+                break; 
 
-            case 4:
-            SearchPatient(s); 
-            break; 
+                case 3:
+                SendPatientToDoctor(s);
+                break; 
 
-            case 5:
-            CancelAppointment(s); 
-            break;
-            
-            case 6:
-            cout<<"Exit selected !\n"; 
-            return 0; 
-            break; 
+                case 4:
+                SearchPatient(s); 
+                break; 
 
-            default:
-            cout<<"Invalid choice !\n"; 
+                case 5:
+                CancelAppointment(s); 
+                break;
+                
+                case 6:
+                cout<<"Exit selected !\n"; 
+                return 0; 
+                break; 
+
+                default:
+                cout<<"Invalid choice !\n"; 
+            }
         }
+    }
+    else{
+        cout<<"Access Denied \n"; 
     }
     return 0; 
 }
