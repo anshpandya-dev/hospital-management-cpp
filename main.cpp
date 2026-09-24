@@ -164,21 +164,22 @@ void SearchPatient(Patient *s){
         cout<<"How would you like to search a patient\n"; 
         cout<<"1. By name\n";
         cout<<"2. By ID\n"; 
-        cout<<"3. Condition\n"; 
         cin>>search_choice; 
+        string name; 
+        string id; 
 
         switch (search_choice){
 
             case 1: 
-            string name; 
+            cin.ignore(); 
             cout<<"Enter the name of the patient:- ";
             getline(cin, name);
-            while(temp->name != name && temp!=NULL){
+            while(temp!=NULL && temp->name != name){
                 temp = temp->next; 
                 no_patient +=1; 
             }
             if(temp !=NULL){
-                cout<<"Patient Foudnd at number \n"<<no_patient; 
+                cout<<"Patient Foudnd at number "<<no_patient<<endl; 
                 cout<<"Patient details are given\n "; 
                 cout<<"Name of Patient:- "<<temp->name<<endl;
                 cout<<"Patient ID:- "<<temp->ID;  
@@ -189,16 +190,15 @@ void SearchPatient(Patient *s){
                 cout<<"Contact Number:- "<<temp->contact_no<<endl; 
             }
             else{
-                cout<<"The patient you are searching for does not exist in the Data!"<<endl; 
+                cout<<"The patient you are searching for does not exist in the Data"<<endl; 
             }
+            break; 
             
             case 2:
-
-            
-            string id; 
+            cin.ignore(); 
             cout<<"Enter the id of the patient:- ";
             getline(cin, id);
-            while(temp->ID != id && temp!=NULL){
+            while(temp!=NULL && temp->ID != id){
                 temp = temp->next; 
                 no_patient +=1; 
             }
@@ -214,8 +214,13 @@ void SearchPatient(Patient *s){
                 cout<<"Contact Number:- "<<temp->contact_no<<endl; 
             }
             else{
-                cout<<"The patient you are searching for does not exist in the Data!"<<endl; 
+                cout<<"The patient you are searching for does not exist in the Data"<<endl; 
             }
+            break; 
+
+            default:
+            cout<<"Invalid choice\n"; 
+            
 
 
         
@@ -257,7 +262,7 @@ int main(){
             break; 
 
             case 4:
-            SearchPatient(); 
+            SearchPatient(s); 
             break; 
 
             case 5:
