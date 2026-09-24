@@ -112,41 +112,49 @@ void AddPatient(Patient *&s,Patient *&t){
         // updating the value of the pointer temp 
         t = c->prev;   
     }
-    cout<<"Node created successfully"; 
+    cout<<"Patient added successfully\n"; 
 
 
 } 
 
 void DisplayPatients(Patient *s){
     Patient *temp = s; 
-    while (temp != NULL){
-        cout<<"Name of Patient:- "<<temp->name<<endl;
-        cout<<"Patient ID:- "<<temp->ID;  
-        cout<<"Disease:- "<<temp->disease<<endl; 
-        cout<<"Condition:- "<<temp->condition<<endl; 
-        cout<<"Gender:- "<<temp->gender<<endl; 
-        cout<<"Age:- "<<temp->age<<endl; 
-        cout<<"Contact Number:- "<<temp->contact_no<<endl; 
-        cout<<"-------------*******------------*******------------********-------------"<<endl; 
-
-        temp = temp->next; 
+    if(temp==NULL){
+        cout<<"Nothing to display\n"; 
+    }
+    else{
+        cout<<"============ Waiting List ============\n";
+        while (temp != NULL){
+            cout<<"Name of Patient:   "<<temp->name<<endl;
+            cout<<"Patient ID     :   "<<temp->ID<<endl;  
+            cout<<"Disease        :   "<<temp->disease<<endl; 
+            cout<<"Condition      :   "<<temp->condition<<endl; 
+            cout<<"Gender         :   "<<temp->gender<<endl; 
+            cout<<"Age            :   "<<temp->age<<endl; 
+            cout<<"Contact Number :   "<<temp->contact_no<<endl; 
+            cout<<"--------------------------------------------"<<endl; 
+            
+            temp = temp->next; 
+        }
     }
 } 
 
 void SendPatientToDoctor(Patient *&s){
-
+    
     // edge case in which there is no patient 
     if(s==NULL){
         cout<<"No Patients are currently waiting !"<<endl; 
     }
     else {
         cout<<"Next Patient's Details are: "<<endl; 
-        cout<<"Name: "<<s->name<<endl; 
-        cout<<"Disease: "<<s->disease<<endl; 
-        cout<<"Condition: "<<s->condition<<endl; 
-        cout<<"Contact number: "<<s->contact_no<<endl; 
-        cout<<"Gender: "<<s->gender<<endl; 
+        cout<<"Name           :   "<<s->name<<endl; 
+        cout<<"Patient ID     :   "<<s->ID<<endl;  
+        cout<<"Disease        :   "<<s->disease<<endl; 
+        cout<<"Condition      :   "<<s->condition<<endl; 
+        cout<<"Contact number :   "<<s->contact_no<<endl; 
+        cout<<"Gender         :   "<<s->gender<<endl; 
         cout<<endl; 
+        cout<<"--------------------------------------------"<<endl; 
         cout<<"Sending next patient to the Doctor !"<<endl; 
         s = s->next; 
         s->prev == NULL;  
@@ -183,13 +191,13 @@ Patient* SearchPatient(Patient *s){
             if(temp !=NULL){
                 cout<<"Patient Foudnd at number "<<no_patient<<endl; 
                 cout<<"Patient details are given\n "; 
-                cout<<"Name of Patient:- "<<temp->name<<endl;
-                cout<<"Patient ID:- "<<temp->ID;  
-                cout<<"Disease:- "<<temp->disease<<endl; 
-                cout<<"Condition:- "<<temp->condition<<endl; 
-                cout<<"Gender:- "<<temp->gender<<endl; 
-                cout<<"Age:- "<<temp->age<<endl; 
-                cout<<"Contact Number:- "<<temp->contact_no<<endl; 
+                cout<<"Name of Patient  :   "<<temp->name<<endl;
+                cout<<"Patient ID       :   "<<temp->ID<<endl;  
+                cout<<"Disease          :   "<<temp->disease<<endl; 
+                cout<<"Condition        :   "<<temp->condition<<endl; 
+                cout<<"Gender           :   "<<temp->gender<<endl; 
+                cout<<"Age              :   "<<temp->age<<endl; 
+                cout<<"Contact Number   :   "<<temp->contact_no<<endl; 
 
                 return temp;
             }
@@ -209,13 +217,13 @@ Patient* SearchPatient(Patient *s){
             if(temp !=NULL){
                 cout<<"Patient Foudnd at number \n"<<no_patient; 
                 cout<<"Patient details are given\n "; 
-                cout<<"Name of Patient:- "<<temp->name<<endl;
-                cout<<"Patient ID:- "<<temp->ID;  
-                cout<<"Disease:- "<<temp->disease<<endl; 
-                cout<<"Condition:- "<<temp->condition<<endl; 
-                cout<<"Gender:- "<<temp->gender<<endl; 
-                cout<<"Age:- "<<temp->age<<endl; 
-                cout<<"Contact Number:- "<<temp->contact_no<<endl; 
+                cout<<"Name of Patient :   "<<temp->name<<endl;
+                cout<<"Patient ID      :   "<<temp->ID;  
+                cout<<"Disease         :   "<<temp->disease<<endl; 
+                cout<<"Condition       :   "<<temp->condition<<endl; 
+                cout<<"Gender          :   "<<temp->gender<<endl; 
+                cout<<"Age             :   "<<temp->age<<endl; 
+                cout<<"Contact Number  :   "<<temp->contact_no<<endl; 
 
                 return temp;
             }
@@ -262,11 +270,17 @@ void CancelAppointment(Patient *&s){
 int main(){
     Patient *s,*t; 
     s=NULL,t=NULL; 
+    // string User_name = "Admin", Password = "AD1234"; 
+    // string t_usname, t_pass; 
+    // cout<<"Enter your user name : "<<endl; 
+    // getline(cin, User_name);
+    // cout<<"Enter your password: "<<endl;
+    // getline   
 
     while(true){
         int choice;
-        cout<<"Enter your choices \n"; 
-        cout<<"-------------------------||||||||-------------------------\n";
+        cout<<"Enter your choice \n"; 
+        cout<<endl; 
         cout<<"\nEnter 1 to Add new patient\n";
         cout<<"Enter 2 to Display the patients\n"; 
         cout<<"Enter 3 to send next patient to Doctor\n"; 
