@@ -157,7 +157,8 @@ void SendPatientToDoctor(Patient *&s){
         cout<<"--------------------------------------------"<<endl; 
         cout<<"Sending next patient to the Doctor !"<<endl; 
         s = s->next; 
-        s->prev == NULL;  
+        if(s!=NULL){
+            s->prev = NULL;}  
     }
 }
 
@@ -248,7 +249,10 @@ void CancelAppointment(Patient *&s){
     else{
         if(temp->prev==NULL){         // if the first patient's appointment is being cancelled 
             s=s->next;
-            s->prev=NULL; 
+            if(s != NULL){
+                s->prev = NULL;
+            }
+ 
             cout<<"\nAppointment cancelled successfully\n"; 
         }  
         else if(temp->next==NULL){     // if the last is being deleted 
@@ -277,7 +281,7 @@ int main(){
     cout<<"Enter  password: ";
     getline(cin, t_pass); 
 
-    
+
     if(t_usname==User_name && t_pass==Password) {
         cout<<"Access Granted\n"; 
 
